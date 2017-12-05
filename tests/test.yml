@@ -1,0 +1,17 @@
+---
+- hosts: all
+
+  vars:
+    test_user: "{{ ansible_env.USER }}"
+    test_home: "{{ ansible_env.HOME }}"
+
+  pre_tasks:
+    - name: Update apt cache.
+      apt:
+        update_cache: yes
+        cache_valid_time: 600
+      when: ansible_os_family == 'Debian'
+      changed_when: false
+
+  roles:
+    - role_under_test

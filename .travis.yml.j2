@@ -1,0 +1,31 @@
+---
+services: docker
+
+env:
+  # Test package install on all supported OSes.
+  - distro: gallium
+    playbook: test.yml
+  - distro: xenial
+    playbook: test.yml
+
+script:
+  # Configure test script so we can run extra tests after playbook is run.
+  - export container_id=$(date +%s)
+  - export cleanup=false
+
+  # Download test shim.
+  - wget -O ${PWD}/tests/test.sh https://raw.githubusercontent.com/polymimetic/ansible-utility-belt/master/scripts/test.sh
+  - chmod +x ${PWD}/tests/test.sh
+
+  # Run tests.
+  - ${PWD}/tests/test.sh
+
+  # Ensure {{ role_name }} is installed and working.
+  - 'docker exec --tty ${container_id} env TERM=xterm which {{ role_name }}'
+  - 'docker exec --tty ${container_id} env TERM=xterm test -x /usr/bin/{{ role_name }}'
+
+  - 'docker exec --tty ${container_id} env TERM=xterm {{ role_name }} --version'
+  - 'docker exec --tty ${container_id} env TERM=xterm /usr/bin/{{ role_name }} --version | grep -qF "${{ role_name | upper }}_VERSION"'
+
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/

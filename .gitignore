@@ -1,0 +1,25 @@
+### OS Generated ###
+*~
+.Trash-*
+
+### IDE Files ###
+*.sublime-project
+*.sublime-workspace
+
+### Virtualbox ###
+.virtualbox
+vbox_host.cfg
+
+### Vagrant ###
+.vagrant
+*.box
+
+### Ansible ###
+*.retry
+.vault
+
+### Testing ###
+tests/test.sh
+
+### Other ###
+!empty
