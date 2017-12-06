@@ -1,32 +1,11 @@
 # Ansible Role: {{ role_name | title }}
 
 [![Build Status](https://travis-ci.org/polymimetic/ansible-role-{{ role_name }}.svg?branch=master)](https://travis-ci.org/polymimetic/ansible-role-{{ role_name }})
+[![Release](https://img.shields.io/github/release/polymimetic/ansible-role-{{ role_name }}.svg?style=flat-square)](https://github.com/polymimetic/ansible-role-{{ role_name }}/releases)
 [![License: MIT](https://img.shields.io/badge/license-MIT%20License-brightgreen.svg)](https://opensource.org/licenses/MIT)
 [![Ansible Galaxy](https://img.shields.io/badge/galaxy-polymimetic.{{ role_name }}-blue.svg?style=flat)](https://galaxy.ansible.com/polymimetic/{{ role_name }}/)
 
 A brief description of the role goes here.
-
-## Installation
-
-Use the `ansible-galaxy` command to download roles from the [Ansible Galaxy](https://galaxy.ansible.com/) website.
-
-```bash
-$ ansible-galaxy install polymimetic.{{ role_name }}
-```
-It is also possible to install the role directly from the git repository.
-
-```bash
-$ ansible-galaxy install git+https://github.com/polymimetic/ansible-role-{{ role_name }}.git
-```
-
-You can add this role as a dependency for other roles by adding the role to the `meta/main.yml` file of your own role:
-
-```yaml
-dependencies:
-  - { role: polymimetic.{{ role_name }} }
-```
-
-For more information on installing Ansible roles, including via a `requirements.yml` file, please see the [Ansible Galaxy documentation](http://docs.ansible.com/ansible/latest/galaxy.html#installing-roles).
 
 ## Requirements
 
@@ -59,18 +38,6 @@ To run the role, include it as follows:
     - hosts: all
       roles:
          - { role: polymimetic.{{ role_name }}, x: 42 }
-
-## Testing
-
-To run the test playbook(s) in `tests` directory:
-
-  1. Install and start [Docker](https://www.docker.com/).
-  2. Download the test shim into `tests/test.sh`:
-    - `wget -O tests/test.sh https://raw.githubusercontent.com/polymimetic/ansible-utility/master/scripts/test.sh`
-  3. Make the test shim executable: `chmod +x tests/test.sh`.
-  4. Run (from the role root directory) `distro=[distro] playbook=[playbook] ./tests/test.sh`
-
-If you don't want the container to be automatically deleted after the test playbook is run, add the following environment variables: `cleanup=false container_id=$(date +%s)`
 
 ## Credits
 
