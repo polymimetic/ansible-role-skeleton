@@ -1,6 +1,15 @@
 ### OS Generated ###
 *~
+.DS_Store
+.DS_Store?
 .Trash-*
+
+### Dotfiles ###
+*.box
+*.log
+*.out
+*.swp
+*.py[co]
 
 ### IDE Files ###
 *.sublime-project
@@ -17,9 +26,6 @@ vbox_host.cfg
 ### Ansible ###
 *.retry
 .vault
-
-### Testing ###
-tests/test.sh
 
 ### Other ###
 !empty

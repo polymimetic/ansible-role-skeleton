@@ -12,13 +12,11 @@ script:
   # Configure test script so we can run extra tests after playbook is run.
   - export container_id=$(date +%s)
   - export cleanup=false
-
-  # Download test shim.
-  - wget -O ${PWD}/tests/test.sh https://raw.githubusercontent.com/polymimetic/ansible-utility/master/scripts/test.sh
-  - chmod +x ${PWD}/tests/test.sh
+  - export test_suite=false
 
   # Run tests.
-  - ${PWD}/tests/test.sh
+  - chmod +x ${PWD}/tests/run-test.sh
+  - ${PWD}/tests/run-test.sh
 
   # Ensure {{ role_name }} is installed and working.
   - 'docker exec --tty ${container_id} env TERM=xterm which {{ role_name }}'
